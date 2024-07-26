@@ -173,7 +173,7 @@ const SortingVisualiser: React.FC = () => {
           {arr.map((value, index) => (
             <div
               key={index}
-              className="bg-green-700 text-white text-center mx-1"
+              className={`text-center mx-1 ${activeIndices.includes(index) ? 'bg-red-700' : 'bg-green-700'} text-white`}
               style={{ height: `${value}%`, width: '3%' }}>
               {value}
             </div>
