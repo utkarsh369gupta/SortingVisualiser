@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 
 const SortingVisualiser: React.FC = () => {
-  const generateRandomArray = (length: number): number[] => {
-    return Array.from({ length }, () => Math.floor(Math.random() * 101));
+  const generateRandomArray = (length: number, min: number = 6, max: number = 100): number[] => {
+    if (length > (max - min + 1)) {
+      throw new Error("Length exceeds the number of unique values in the specified range");
+    }
+    const uniqueNumbers = new Set<number>();
+    while (uniqueNumbers.size < length) {
+      const num = Math.floor(Math.random() * (max - min + 1)) + min;
+      uniqueNumbers.add(num);
+    }
+    return Array.from(uniqueNumbers);
   };
 
   const [arr, setArr] = useState<number[]>(() => generateRandomArray(30));
@@ -62,13 +70,23 @@ const SortingVisualiser: React.FC = () => {
           <div>
             <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2 font-bold" onClick={() => setArr(bubbleSort(arr))}>
               Bubble Sort
-            </button></div><div>
+            </button>
+          </div>
+          <div>
             <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2 font-bold" onClick={() => setArr(mergeSort(arr))}>
               Merge Sort
-            </button></div><div>
+            </button>
+          </div>
+          <div>
             <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700 font-bold" onClick={() => setArr(quickSort(arr))}>
               Quick Sort
-            </button></div>
+            </button>
+          </div>
+          <div>
+            <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700 font-bold" onClick={() => setArr(quickSort(arr))}>
+              Heap Sort
+            </button>
+          </div>
         </div>
       </div>
 
