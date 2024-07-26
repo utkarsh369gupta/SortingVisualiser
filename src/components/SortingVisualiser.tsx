@@ -18,6 +18,7 @@ const SortingVisualiser: React.FC = () => {
   const [arr, setArr] = useState<number[]>(() => generateRandomArray(30));
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const [activeIndices, setActiveIndices] = useState<number[]>([]);
+  const [speed, setSpeed] = useState<number>(100);
 
   // Bubble Sort
   const bubbleSort = (array: number[]): [number, number][] => {
@@ -111,7 +112,7 @@ const SortingVisualiser: React.FC = () => {
     setArr([...array]);
 
     setTimeout(() => {
-      animateSwaps(array, swaps, speed);
+      animateSwaps(array, swaps);
     }, speed);
   };
 
@@ -124,7 +125,8 @@ const SortingVisualiser: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-3 bg-slate-500">
+      <div className='bg-slate-300 p-6 rounded-lg'>
       <div className='flex flex-row'>
         <div className='basis-1/4'>
           <h1 className="text-3xl font-bold mb-4 pr-16">Sorting Visualiser</h1>
@@ -167,8 +169,9 @@ const SortingVisualiser: React.FC = () => {
         onClick={() => !isAnimating && setArr(generateRandomArray(30))}>
         Generate New Values
       </button>
+      </div>
 
-      <div className='mt-6 bottom-0 border border-gray-300'>
+      <div className='mt-6 bottom-0 border-2 border-gray-400 pb-6 rounded-md bg-slate-300'>
         <div className="flex items-end h-96 mt-6">
           {arr.map((value, index) => (
             <div
@@ -179,6 +182,19 @@ const SortingVisualiser: React.FC = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="flex flex-row items-center mb-4 mt-8 font-bold justify-center ">
+        <div className='border-2 rounded-md border-zinc-400 p-6 bg-slate-300'>
+        <label htmlFor="speed" className="mr-2">Speed:</label>
+        <input
+          type="range"
+          id="speed"
+          min="50"
+          max="1000"
+          value={speed}
+          onChange={(e) => setSpeed(Number(e.target.value))}
+          className="w-32"
+        /></div>
       </div>
     </div>
   );
