@@ -8,6 +8,7 @@ const SortingVisualiser: React.FC = () => {
       throw new Error("Length exceeds the number of unique values in the specified range");
     }
     const uniqueNumbers = new Set<number>();
+    uniqueNumbers.add(26);    // as 26 is my lucky number
     while (uniqueNumbers.size < length) {
       const num = Math.floor(Math.random() * (max - min + 1)) + min;
       uniqueNumbers.add(num);
