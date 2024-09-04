@@ -45,4 +45,4 @@ Ensure you have the following installed on your system:
 
 2. **Open the Application**
 
-    Open your browser and navigate to http://localhost:5173 or the Local link you have been assigned to see the sorting visualizer in action.
+    Open your browser and navigate to http://localhost:5173 or the Local link you have been assigned to see the sorting visualizer in action. 
