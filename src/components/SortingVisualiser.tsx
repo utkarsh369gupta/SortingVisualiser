@@ -145,6 +145,12 @@ const SortingVisualiser: React.FC = () => {
             className="w-32"
           /></div>
       </div>
+
+      {/* Footer */}
+      <footer className="footer text-center py-4 bg-gray-800 text-white">
+        <p>© 2024 Sorting Visualiser Project. All rights reserved.</p>
+        <p>Made by Utkarsh Gupta</p>
+      </footer>
     </div>
   );
 };
